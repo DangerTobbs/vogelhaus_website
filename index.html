@@ -352,28 +352,41 @@
       background: var(--cream);
     }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    .photo-collage {
+      position: relative;
+      height: 520px;
       margin-top: 2.5rem;
-      border-radius: 10px;
-      overflow: hidden;
     }
 
-    .photo-grid img {
+    .photo-collage .pc-img {
+      position: absolute;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(40,20,0,0.18);
+    }
+
+    .photo-collage .pc-img img {
       width: 100%;
-      height: 300px;
+      height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
     }
 
-    .photo-grid img:hover { transform: scale(1.03); }
+    .pc-main    { right: 0; top: 0;      width: 55%; height: 300px; }
+    .pc-bottom  { right: 0; bottom: 0;   width: 72%; height: 250px; }
+    .pc-left    { left: 0;  top: 60px;   width: 38%; height: 260px; z-index: 2; }
+    .pc-portrait{ left: 28%; top: 160px; width: 22%; height: 300px; z-index: 3; }
 
-    .photo-grid-wrap {
-      overflow: hidden;
-      border-radius: 8px;
+    @media (max-width: 768px) {
+      .photo-collage { height: auto; }
+      .photo-collage .pc-img {
+        position: relative;
+        width: 100% !important;
+        height: 220px !important;
+        top: auto !important; left: auto !important;
+        right: auto !important; bottom: auto !important;
+        margin-bottom: 1rem;
+      }
     }
 
     /* ── KALENDER ── */
@@ -586,7 +599,7 @@
       .welcome-grid { grid-template-columns: 1fr; gap: 2rem; }
       .lage-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
-      .photo-grid { grid-template-columns: 1fr; }
+
       .footer-bottom { flex-direction: column; text-align: center; }
     }
 
@@ -730,12 +743,18 @@
     <div class="section-label">Umgebung</div>
     <h2 class="section-title">Die Sächsische Schweiz</h2>
     <p style="color:var(--muted); max-width:600px; margin-bottom:2rem;">Erkunden Sie die einzigartigen Felsformationen, Schluchten und Aussichtspunkte direkt vor der Haustür. Die Bastei ist nur wenige Kilometer entfernt.</p>
-    <div class="photo-grid">
-      <div class="photo-grid-wrap">
+    <div class="photo-collage">
+      <div class="pc-img pc-main">
         <img src="images/Bastei_3.jpg" alt="Basteibrücke">
       </div>
-      <div class="photo-grid-wrap">
+      <div class="pc-img pc-bottom">
         <img src="images/Bastei_21.png" alt="Bastei Panorama">
+      </div>
+      <div class="pc-img pc-left">
+        <img src="images/Karte_1.png" alt="Wanderkarte">
+      </div>
+      <div class="pc-img pc-portrait">
+        <img src="images/roland-losslein.jpg" alt="Wanderer in der Sächsischen Schweiz">
       </div>
     </div>
   </div>
@@ -776,7 +795,7 @@
   <h2 style="font-size:3rem; color:#fff; margin-bottom:1rem;">Jetzt buchen!</h2>
   <p style="color:rgba(255,255,255,0.9); margin-bottom:2rem;">Sie können die Ferienwohnung direkt per Mail oder telefonisch buchen.</p>
   <p style="color:#fff; font-size:1.1rem; margin-bottom:0.5rem;">
-    <i class="fa-solid fa-envelope" style="margin-right:0.5rem;"></i>vogelhaus.rosenthal@gmail.com
+    <i class="fa-solid fa-envelope" style="margin-right:0.5rem;"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea9c858d8f86828b9f99c49885998f849e828b86aa8d878b8386c4898587">[email&#160;protected]</a>
   </p>
   <p style="color:#fff; font-size:1.1rem;">
     <i class="fa-solid fa-phone" style="margin-right:0.5rem;"></i>035033 71328
@@ -792,7 +811,7 @@
       <div class="lage-info">
         <div class="lage-contact-item"><i class="fa-solid fa-location-dot"></i><span>Königsteiner Str. 33, 01824 Rosenthal-Bielatal</span></div>
         <div class="lage-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+493503371328">035033 71328</a></div>
-        <div class="lage-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:vogelhaus.rosenthal@gmail.com">vogelhaus.rosenthal@gmail.com</a></div>
+        <div class="lage-contact-item"><i class="fa-solid fa-envelope"></i><a href="/cdn-cgi/l/email-protection#f6809991939a9e978385d88499859398829e979ab6919b979f9ad895999b"><span class="__cf_email__" data-cfemail="d6a0b9b1b3babeb7a3a5f8a4b9a5b3b8a2beb7ba96b1bbb7bfbaf8b5b9bb">[email&#160;protected]</span></a></div>
         <div style="margin-top:1.5rem; color:var(--muted); font-size:14px; line-height:1.8;">
           <p><strong style="color:var(--brown);">Mit dem Auto:</strong><br>A17 Abfahrt Pirna, dann Richtung Bad Schandau / Bielatal. Ca. 45 min von Dresden.</p>
           <p style="margin-top:1rem;"><strong style="color:var(--brown);">Mit der Bahn:</strong><br>S-Bahn Dresden–Bad Schandau, dann Bus nach Rosenthal-Bielatal.</p>
@@ -832,7 +851,7 @@
       <h4>Kontakt</h4>
       <p><i class="fa-solid fa-location-dot" style="color:var(--gold-light); margin-right:6px;"></i>Königsteiner Str. 33<br>01824 Rosenthal-Bielatal</p>
       <a href="tel:+493503371328"><i class="fa-solid fa-phone" style="color:var(--gold-light); margin-right:6px;"></i>035033 71328</a>
-      <a href="mailto:vogelhaus.rosenthal@gmail.com"><i class="fa-solid fa-envelope" style="color:var(--gold-light); margin-right:6px;"></i>vogelhaus.rosenthal@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#74021b1311181c1501075a061b07111a001c1518341319151d185a171b19"><i class="fa-solid fa-envelope" style="color:var(--gold-light); margin-right:6px;"></i><span class="__cf_email__" data-cfemail="0f7960686a63676e7a7c217d607c6a617b676e634f68626e6663216c6062">[email&#160;protected]</span></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -841,7 +860,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── SLIDER ──
 var slides = document.querySelectorAll('.slide');
 var dotsContainer = document.getElementById('slider-dots');
@@ -931,21 +950,4 @@ startAuto();
   };
 
   fetch(AVAIL_URL+'?_='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(data){
-      bookedRanges=data.booked||[]; loadedOk=true;
-      var d=data.updated?new Date(data.updated):null;
-      document.getElementById('vr-cal-status').textContent=d?'Aktualisiert: '+d.toLocaleDateString('de-DE'):'Geladen';
-      document.getElementById('vr-cal-hint').textContent='';
-      render();
-    })
-    .catch(function(){
-      document.getElementById('vr-cal-status').textContent='Nicht erreichbar';
-      loadedOk=false; render();
-    });
-
-  render();
-})();
-</script>
-</body>
-</html>
+    .then(fu
