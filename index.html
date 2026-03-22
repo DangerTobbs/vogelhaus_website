@@ -99,7 +99,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: url('images/Bastei_21.png') center center / cover no-repeat;
+      background: url('images/bastei_21.png') center center / cover no-repeat;
     }
 
     .hero-overlay {
@@ -208,7 +208,7 @@
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
       margin-top: 2.5rem;
     }
@@ -250,7 +250,7 @@
 
     /* ── SLIDER ── */
     .galerie {
-      background: var(--brown);
+      background: var(--gold);
       padding: 5rem 0;
     }
 
@@ -258,8 +258,8 @@
       padding: 0 2rem;
     }
 
-    .galerie .section-title { color: var(--gold-light); }
-    .galerie .section-label { color: rgba(232,184,112,0.7); }
+    .galerie .section-title { color: #fff; }
+    .galerie .section-label { color: rgba(255,255,255,0.75); }
 
     .slider-wrap {
       position: relative;
@@ -284,6 +284,30 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .slide-overlay {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 45%;
+      background: rgba(190,138,60,0.82);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .slide-overlay p {
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.65;
+      font-family: 'Cabin', sans-serif;
+    }
+
+    .slide-overlay strong { font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .slide-overlay { width: 65%; padding: 1rem; }
+      .slide-overlay p { font-size: 12px; }
     }
 
     .slider-btn {
@@ -432,7 +456,7 @@
     .footer-logo img {
       height: 56px;
       filter: brightness(0) invert(1);
-      opacity: 1;
+      opacity: 0.85;
       margin-bottom: 1rem;
     }
 
@@ -443,13 +467,13 @@
 
     .footer-col h4 {
       font-family: 'Just Another Hand', cursive;
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: var(--gold-light);
       margin-bottom: 1rem;
     }
 
     .footer-col p, .footer-col a {
-      font-size: 13px;
+      font-size: 15px;
       color: rgba(255,255,255,0.65);
       text-decoration: none;
       display: block;
@@ -579,7 +603,7 @@
 
 <!-- NAV -->
 <nav>
-  <img src="images/Vogel_Logo.png" alt="Vogelhaus Rosenthal" class="logo">
+  <img src="images/vogel_logo.png" alt="Vogelhaus Rosenthal" class="logo">
   <ul>
     <li><a href="#willkommen">Das Vogelhaus</a></li>
     <li><a href="#galerie">Galerie</a></li>
@@ -594,7 +618,7 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <img src="images/Vogel_Logo.png" alt="Logo" class="hero-logo">
+    <img src="images/vogel_logo.png" alt="Logo" class="hero-logo">
     <h1>Ferien im Herzen der<br>Sächsischen Schweiz</h1>
     <p>Rosenthal-Bielatal · Wandern · Klettern · Erholen</p>
     <a href="#willkommen" class="hero-cta">Mehr entdecken</a>
@@ -613,7 +637,7 @@
         <p>Wir haben unsere Ferienwohnung mit viel Liebe eingerichtet und hoffen, dass es Ihnen bei uns gefällt. Kommen Sie gern auf uns zu und wir helfen Ihnen mit jedem Anliegen.</p>
       </div>
       <div class="welcome-img">
-        <img src="images/Karte_1.png" alt="Wanderkarte Bielatalgebiet">
+        <img src="images/karte_1.png" alt="Wanderkarte Bielatalgebiet">
       </div>
     </div>
   </div>
@@ -698,13 +722,34 @@
     <div class="section-label">Die Wohnung</div>
     <h2 class="section-title">Ein Blick ins Vogelhaus</h2>
     <div class="slider-wrap" id="slider">
-      <div class="slide active"><img src="images/Vogelhaus_Slider_2020_001.png" alt="Terrasse"></div>
-      <div class="slide"><img src="images/Vogelhaus_Slider_2020_002.png" alt="Garten"></div>
-      <div class="slide"><img src="images/Vogelhaus_Slider_2020_003.png" alt="Wohnzimmer"></div>
-      <div class="slide"><img src="images/Vogelhaus_Slider_2020_004.png" alt="Schlafzimmer"></div>
-      <div class="slide"><img src="images/Vogelhaus_Slider_2020_006.png" alt="Haustiere"></div>
-      <div class="slide"><img src="images/Vogelhaus_Slider_2020_007.png" alt="Küche"></div>
-      <div class="slide"><img src="images/Bad_neu_001.png" alt="Bad"></div>
+      <div class="slide active">
+        <img src="images/vogelhaus_slider_001.png" alt="Terrasse">
+        <div class="slide-overlay"><p>Die Ferienwohnung hat einen separaten Eingang und bietet Ihnen mit einer Terrasse im Gr&uuml;nen einen wundervollen Ort, an dem Sie fr&uuml;hst&uuml;cken, grillen oder einfach die Stille genie&szlig;en k&ouml;nnen.</p></div>
+      </div>
+      <div class="slide">
+        <img src="images/vogelhaus_slider_002.png" alt="Garten">
+        <div class="slide-overlay"><p>Den Garten des Hauses d&uuml;rfen Sie gern mitbenutzen, sodass sich die Kleinen austoben k&ouml;nnen.<br><br>F&uuml;r ein Sonnenbad stellen wir Ihnen gern Liegen bereit.</p></div>
+      </div>
+      <div class="slide">
+        <img src="images/vogelhaus_slider_003.png" alt="Wohnzimmer">
+        <div class="slide-overlay"><p>Die praktisch eingerichtete Stube bietet Ihnen Esstisch und TV. WLAN ist ebenfalls verf&uuml;gbar. Wir glauben jedoch, dass die Natur in der Umgebung gro&szlig;artiger ist, als die Diagonale des Fernsehers.<br><br>Die ausklappbare Couch erm&ouml;glicht zwei zus&auml;tzliche Schlafpl&auml;tze.</p></div>
+      </div>
+      <div class="slide">
+        <img src="images/vogelhaus_slider_004.png" alt="Schlafzimmer">
+        <div class="slide-overlay"><p>Das Schlafzimmer ist mit einem Doppelbett ausgestattet. Bettw&auml;sche stellen wir Ihnen zur Verf&uuml;gung.<br><br>Nachts h&ouml;rt man nichts als das sanfte Rauschen des B&auml;chleins.</p></div>
+      </div>
+      <div class="slide">
+        <img src="images/vogelhaus_slider_006.png" alt="Haustiere">
+        <div class="slide-overlay"><p>Nat&uuml;rlich darf Ihr Liebling mitkommen, solange es kein Elefant oder Saurier ist.<br><br>Wir m&ouml;gen Haustiere gern und m&ouml;chten, dass es auch ihnen im Vogelhaus gef&auml;llt.</p></div>
+      </div>
+      <div class="slide">
+        <img src="images/vogelhaus_slider_007.png" alt="Küche">
+        <div class="slide-overlay"><p>Wir &uuml;berlassen Ihnen die Wohnung gern f&uuml;r <strong>80 &euro; pro &Uuml;bernachtung</strong>. Darin sind bereits alle Nebenkosten enthalten. Einkaufsm&ouml;glichkeiten zur Selbstverpflegung finden Sie in unserem Ort.<br><br>Fehlt etwas? Geben Sie gern einfach Bescheid!</p></div>
+      </div>
+      <div class="slide">
+        <img src="images/bad_neu_001.png" alt="Bad">
+        <div class="slide-overlay"><p>Das kleine aber feine Bad bietet WC und Dusche. Handt&uuml;cher stellen wir auch zur Verf&uuml;gung.<br><br>Bei l&auml;ngeren Aufenthalten &uuml;bernehmen wir gern eine W&auml;sche f&uuml;r Sie.</p></div>
+      </div>
       <button class="slider-btn prev" onclick="sliderMove(-1)">&#8249;</button>
       <button class="slider-btn next" onclick="sliderMove(1)">&#8250;</button>
     </div>
@@ -720,10 +765,10 @@
     <p style="color:var(--muted); max-width:600px; margin-bottom:2rem;">Erkunden Sie die einzigartigen Felsformationen, Schluchten und Aussichtspunkte direkt vor der Haustür. Die Bastei ist nur wenige Kilometer entfernt.</p>
     <div class="photo-grid">
       <div class="photo-grid-wrap">
-        <img src="images/Bastei_3.jpg" alt="Basteibrücke">
+        <img src="images/bastei_3.jpg" alt="Basteibrücke">
       </div>
       <div class="photo-grid-wrap">
-        <img src="images/Bastei_21.png" alt="Bastei Panorama">
+        <img src="images/bastei_21.png" alt="Bastei Panorama">
       </div>
     </div>
   </div>
@@ -762,22 +807,13 @@
 <!-- BUCHEN -->
 <section style="background:var(--gold); padding:4rem 2rem; text-align:center;" id="buchen">
   <h2 style="font-size:3rem; color:#fff; margin-bottom:1rem;">Jetzt buchen!</h2>
-  <p style="color:rgba(255,255,255,0.9); margin-bottom:0.5rem;">Sie können die Ferienwohnung direkt per Mail oder telefonisch buchen.</p>
-  <p style="color:rgba(255,255,255,0.9); margin-bottom:2rem;">Alternativ finden Sie uns auch auf AirBnB oder Booking.com.</p>
-  <div class="booking-links" style="justify-content:center;">
-    <a href="mailto:vogelhaus.rosenthal@gmail.com" class="booking-btn" style="background:#fff; color:var(--gold-dark); border-color:#fff;">
-      <i class="fa-solid fa-envelope"></i> E-Mail schreiben
-    </a>
-    <a href="tel:+493503371328" class="booking-btn" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.5);">
-      <i class="fa-solid fa-phone"></i> 035033 71328
-    </a>
-    <a href="https://www.airbnb.de/rooms/18189051" target="_blank" class="booking-btn airbnb">
-      <i class="fa-brands fa-airbnb"></i> AirBnB
-    </a>
-    <a href="https://www.booking.com/hotel/de/vogelhaus-rosenthal.de.html" target="_blank" class="booking-btn bookingcom">
-      <i class="fa-solid fa-b"></i> Booking.com
-    </a>
-  </div>
+  <p style="color:rgba(255,255,255,0.9); margin-bottom:2rem;">Sie können die Ferienwohnung direkt per Mail oder telefonisch buchen.</p>
+  <p style="color:#fff; font-size:1.1rem; margin-bottom:0.5rem;">
+    <i class="fa-solid fa-envelope" style="margin-right:0.5rem;"></i>vogelhaus.rosenthal@gmail.com
+  </p>
+  <p style="color:#fff; font-size:1.1rem;">
+    <i class="fa-solid fa-phone" style="margin-right:0.5rem;"></i>035033 71328
+  </p>
 </section>
 
 <!-- LAGE -->
@@ -815,8 +851,7 @@
   <div class="footer-inner">
     <div class="footer-logo">
       <img src="images/gastgeber.jpg" alt="Ihre Gastgeber" class="footer-owner-photo">
-      <img src="images/Vogel_Logo.png" alt="Vogelhaus Rosenthal">
-      <p>Ihre Gastgeber in Rosenthal-Bielatal. Wir freuen uns auf Ihren Besuch!</p>
+      <p style="margin-top:0.5rem;">Ihre Gastgeber in Rosenthal-Bielatal. Wir freuen uns auf Ihren Besuch!</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
