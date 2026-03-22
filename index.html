@@ -291,8 +291,8 @@
 
     .slide-overlay p {
       color: #fff;
-      font-size: 15px;
-      line-height: 1.65;
+      font-size: 18px;
+      line-height: 1.7;
       font-family: 'Cabin', sans-serif;
     }
 
@@ -328,21 +328,25 @@
     .slider-dots {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-top: 1.25rem;
+      gap: 10px;
+      margin-top: 1rem;
+      align-items: center;
     }
 
     .slider-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: rgba(200,148,74,0.35);
+      background: rgba(200,148,74,0.3);
       cursor: pointer;
-      border: none;
-      transition: background 0.2s;
+      border: 2px solid var(--gold);
+      transition: all 0.2s;
     }
 
-    .slider-dot.active { background: var(--gold); }
+    .slider-dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
 
     /* ── GALERIE FOTOS (Bastei) ── */
     .umgebung {
