@@ -218,12 +218,11 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      padding: 0.85rem 0.5rem;
-      border-bottom: 1px solid rgba(200,148,74,0.15);
+      padding: 0.75rem 0.5rem;
     }
 
     .feature-item:nth-child(odd) { padding-right: 2rem; }
-    .feature-item:nth-child(even) { padding-left: 2rem; border-left: 1px solid rgba(200,148,74,0.15); }
+    .feature-item:nth-child(even) { padding-left: 2rem; }
 
     .feature-icon {
       font-size: 22px;
@@ -793,7 +792,7 @@
   <h2 style="font-size:3rem; color:#fff; margin-bottom:1rem;">Jetzt buchen!</h2>
   <p style="color:rgba(255,255,255,0.9); margin-bottom:2rem;">Sie können die Ferienwohnung direkt per Mail oder telefonisch buchen.</p>
   <p style="color:#fff; font-size:1.1rem; margin-bottom:0.5rem;">
-    <i class="fa-solid fa-envelope" style="margin-right:0.5rem;"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ea9c858d8f86828b9f99c49885998f849e828b86aa8d878b8386c4898587">[email&#160;protected]</a>
+    <i class="fa-solid fa-envelope" style="margin-right:0.5rem;"></i>vogelhaus.rosenthal@gmail.com
   </p>
   <p style="color:#fff; font-size:1.1rem;">
     <i class="fa-solid fa-phone" style="margin-right:0.5rem;"></i>035033 71328
@@ -948,4 +947,21 @@ startAuto();
   };
 
   fetch(AVAIL_URL+'?_='+Date.now())
-    .then(fu
+    .then(function(r){return r.json();})
+    .then(function(data){
+      bookedRanges=data.booked||[]; loadedOk=true;
+      var d=data.updated?new Date(data.updated):null;
+      document.getElementById('vr-cal-status').textContent=d?'Aktualisiert: '+d.toLocaleDateString('de-DE'):'Geladen';
+      document.getElementById('vr-cal-hint').textContent='';
+      render();
+    })
+    .catch(function(){
+      document.getElementById('vr-cal-status').textContent='Nicht erreichbar';
+      loadedOk=false; render();
+    });
+
+  render();
+})();
+</script>
+</body>
+</html>
