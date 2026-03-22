@@ -1,7 +1,949 @@
-    .footer-owner-photo {
-        opacity: 1; /* Increased from 0.85 to 1 */
-        /* additional styling to ensure proper display */
-        display: block;
-        max-width: 100%;
-        height: auto;
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vogelhaus Rosenthal – Ferienwohnung in der Sächsischen Schweiz</title>
+  <meta name="description" content="Ferienwohnung im Herzen der Sächsischen Schweiz. Wandern, klettern oder einfach die Ruhe genießen in Rosenthal-Bielatal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500&family=Just+Another+Hand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c8944a;
+      --gold-dark: #9e6e2e;
+      --gold-light: #e8b870;
+      --cream: #faf6ee;
+      --brown: #3a2a12;
+      --brown-light: #6b4e28;
+      --text: #2e2010;
+      --muted: #8a7050;
     }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cabin', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Just Another Hand', cursive;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      background: rgba(250,246,238,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200,148,74,0.2);
+    }
+
+    nav img.logo {
+      height: 48px;
+      width: auto;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      font-family: 'Cabin', sans-serif;
+      font-size: 14px;
+      color: var(--brown-light);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold-dark); }
+
+    .nav-book {
+      background: var(--gold);
+      color: #fff !important;
+      padding: 0.4rem 1.1rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-book:hover { background: var(--gold-dark) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/Bastei_21.png') center center / cover no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(30,15,0,0.25) 0%, rgba(30,15,0,0.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 2rem;
+    }
+
+    .hero-content img.hero-logo {
+      width: 120px;
+      margin-bottom: 1.5rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .hero-content h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: var(--gold-dark); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Cabin', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── WELCOME ── */
+    .welcome {
+      background: var(--cream);
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .welcome-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .welcome-img {
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .welcome-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ── AUSSTATTUNG ── */
+    .ausstattung {
+      background: #f0e8d8;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 1.25rem;
+      border: 1px solid rgba(200,148,74,0.2);
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 14px;
+      color: var(--brown);
+      margin-bottom: 2px;
+    }
+
+    .feature-text span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── SLIDER ── */
+    .galerie {
+      background: var(--brown);
+      padding: 5rem 0;
+    }
+
+    .galerie .container {
+      padding: 0 2rem;
+    }
+
+    .galerie .section-title { color: var(--gold-light); }
+    .galerie .section-label { color: rgba(232,184,112,0.7); }
+
+    .slider-wrap {
+      position: relative;
+      margin-top: 2.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      max-height: 520px;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .slide.active { opacity: 1; }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(200,148,74,0.85);
+      border: none;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-btn:hover { background: var(--gold-dark); }
+    .slider-btn.prev { left: 16px; }
+    .slider-btn.next { right: 16px; }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.25rem;
+    }
+
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(200,148,74,0.35);
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .slider-dot.active { background: var(--gold); }
+
+    /* ── GALERIE FOTOS (Bastei) ── */
+    .umgebung {
+      background: var(--cream);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-grid img:hover { transform: scale(1.03); }
+
+    .photo-grid-wrap {
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    /* ── KALENDER ── */
+    .verfuegbarkeit {
+      background: #f0e8d8;
+    }
+
+    /* ── KARTE ── */
+    .lage {
+      background: var(--cream);
+    }
+
+    .lage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+
+    .lage-info address {
+      font-style: normal;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .lage-info a {
+      color: var(--gold-dark);
+      text-decoration: none;
+    }
+
+    .lage-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 15px;
+      color: var(--brown-light);
+    }
+
+    .lage-contact-item i {
+      color: var(--gold);
+      width: 18px;
+      text-align: center;
+    }
+
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(200,148,74,0.2);
+    }
+
+    .map-container img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo img {
+      height: 56px;
+      filter: brightness(0) invert(1);
+      opacity: 1;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo p {
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-family: 'Just Another Hand', cursive;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col p, .footer-col a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+
+    .footer-col a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      max-width: 960px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-owner-photo {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      opacity: 0.85;
+    }
+
+    /* ── BOOKING LINKS ── */
+    .booking-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .booking-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 4px;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid;
+      transition: all 0.2s;
+    }
+
+    .booking-btn.airbnb {
+      background: #fff;
+      color: #ff5a5f;
+      border-color: #ff5a5f;
+    }
+
+    .booking-btn.airbnb:hover { background: #ff5a5f; color: #fff; }
+
+    .booking-btn.bookingcom {
+      background: #fff;
+      color: #003580;
+      border-color: #003580;
+    }
+
+    .booking-btn.bookingcom:hover { background: #003580; color: #fff; }
+
+    /* ── CALENDAR (from embed) ── */
+    .vr-cal-card {
+      background: #fffef9;
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem 2rem;
+      max-width: 660px;
+      margin: 0 auto;
+      box-shadow: 0 2px 16px rgba(80,50,10,0.13);
+      font-family: 'Cabin', sans-serif;
+    }
+    .vr-cal-top { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:0.25rem; flex-wrap:wrap; gap:6px; }
+    .vr-cal-title { font-size:16px; font-weight:500; color:#2e2318; letter-spacing:.04em; }
+    .vr-cal-status { font-size:10px; color:#b09878; font-style:italic; }
+    .vr-cal-nav { display:flex; align-items:center; margin:1rem 0 0.9rem; border-bottom:1px solid rgba(100,75,40,.12); padding-bottom:0.9rem; }
+    .vr-cal-nav-btn { background:none; border:none; padding:0 10px; font-size:18px; color:#8c7050; cursor:pointer; transition:color .15s; }
+    .vr-cal-nav-btn:hover { color:#2e2318; }
+    .vr-cal-month-label { font-size:15px; color:#2e2318; flex:1; text-align:center; letter-spacing:.06em; }
+    .vr-cal-legend { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:1rem; align-items:center; }
+    .vr-cal-legend-item { display:flex; align-items:center; gap:5px; font-size:11px; color:#7a6448; }
+    .vr-cal-legend-swatch { width:14px; height:14px; border-radius:4px; flex-shrink:0; }
+    .vr-cal-legend-swatch.s-free { background:#d4edcf; border:1.5px solid #5a9050; }
+    .vr-cal-legend-swatch.s-booked { background:#f5d8d2; border:1.5px solid #c05a40; }
+    .vr-cal-legend-swatch.s-today { background:none; border:2px solid #8c6820; }
+    .vr-cal-grid-header { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin-bottom:3px; }
+    .vr-cal-dow { text-align:center; font-size:9px; letter-spacing:.1em; color:#b09878; text-transform:uppercase; padding:3px 0 5px; }
+    .vr-cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; }
+    .vr-cal-day { border-radius:6px; padding:6px 5px 8px; min-height:62px; border:1px solid rgba(100,75,40,.14); background:#f7f3ec; box-sizing:border-box; }
+    .vr-cal-day.vr-empty { background:none; border-color:transparent; min-height:0; }
+    .vr-cal-day.vr-free { background:#d4edcf; border-color:#5a9050; }
+    .vr-cal-day.vr-booked { background:#f5d8d2; border-color:#c05a40; }
+    .vr-cal-day.vr-today { outline:2px solid #8c6820; outline-offset:-2px; }
+    .vr-cal-day.vr-past { opacity:.38; }
+    .vr-cal-day-num { font-size:13px; color:#2e2318; font-weight:400; line-height:1; }
+    .vr-cal-day.vr-booked .vr-cal-day-num { color:#6e2010; font-weight:500; }
+    .vr-cal-day.vr-free .vr-cal-day-num { color:#1e5018; font-weight:500; }
+    .vr-cal-day-label { font-size:8px; text-transform:uppercase; letter-spacing:.07em; margin-top:6px; line-height:1.2; }
+    .vr-cal-day.vr-booked .vr-cal-day-label { color:#6e2010; }
+    .vr-cal-day.vr-free .vr-cal-day-label { color:#1e5018; }
+    .vr-cal-day-nights { font-size:8px; margin-top:2px; color:#6e2010; opacity:.75; line-height:1.2; }
+    .vr-cal-hint { font-size:10px; color:#b09878; text-align:center; margin-top:1.25rem; font-style:italic; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .welcome-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .lage-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 500px) {
+      .vr-cal-day { min-height: 46px; padding: 4px 3px 5px; }
+      .vr-cal-day-num { font-size: 11px; }
+      .vr-cal-day-label, .vr-cal-day-nights { font-size: 7px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="images/Vogel_Logo.png" alt="Vogelhaus Rosenthal" class="logo">
+  <ul>
+    <li><a href="#willkommen">Das Vogelhaus</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#verfuegbarkeit">Verfügbarkeit</a></li>
+    <li><a href="#lage">Lage</a></li>
+    <li><a href="#buchen" class="nav-book">Jetzt buchen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="images/Vogel_Logo.png" alt="Logo" class="hero-logo">
+    <h1>Ferien im Herzen der<br>Sächsischen Schweiz</h1>
+    <p>Rosenthal-Bielatal · Wandern · Klettern · Erholen</p>
+    <a href="#willkommen" class="hero-cta">Mehr entdecken</a>
+  </div>
+</div>
+
+<!-- WILLKOMMEN -->
+<section class="welcome" id="willkommen">
+  <div class="container">
+    <div class="welcome-grid">
+      <div class="welcome-text">
+        <div class="section-label">Willkommen</div>
+        <h2 class="section-title">Das Vogelhaus Rosenthal</h2>
+        <p>Im Südosten Sachsens, nahe der Landeshauptstadt Dresden liegt die Sächsische Schweiz und begeistert zu jeder Jahreszeit mit wunderschönen Landschaften.</p>
+        <p>Unweit der Grenze zur Tschechischen Republik befindet sich unser kleiner Ort Rosenthal-Bielatal. Wir laden Sie in unsere Ferienwohnung ein, um in unserer schönen Heimat zu wandern, zu klettern oder einfach die Ruhe zu genießen.</p>
+        <p>Wir haben unsere Ferienwohnung mit viel Liebe eingerichtet und hoffen, dass es Ihnen bei uns gefällt. Kommen Sie gern auf uns zu und wir helfen Ihnen mit jedem Anliegen.</p>
+      </div>
+      <div class="welcome-img">
+        <img src="images/Karte_1.png" alt="Wanderkarte Bielatalgebiet">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUSSTATTUNG -->
+<section class="ausstattung" id="ausstattung">
+  <div class="container">
+    <div class="section-label">Ausstattung</div>
+    <h2 class="section-title">Was Sie erwartet</h2>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-euro-sign"></i></div>
+        <div class="feature-text">
+          <strong>80 € pro Nacht</strong>
+          <span>Mindestaufenthalt 3 Nächte, alle Nebenkosten inklusive</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-people-roof"></i></div>
+        <div class="feature-text">
+          <strong>Bis zu 4 Personen</strong>
+          <span>2 Erwachsene & 2 Kinder, ausklappbare Couch für 2 weitere</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-paw"></i></div>
+        <div class="feature-text">
+          <strong>Haustiere willkommen</strong>
+          <span>Wir mögen Tiere und freuen uns auf Ihren Liebling</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-ban-smoking"></i></div>
+        <div class="feature-text">
+          <strong>Nichtraucher</strong>
+          <span>Rauchen in der Wohnung nicht gestattet</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-utensils"></i></div>
+        <div class="feature-text">
+          <strong>Küche</strong>
+          <span>Voll ausgestattete Küche zur Selbstverpflegung</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-wifi"></i></div>
+        <div class="feature-text">
+          <strong>WLAN</strong>
+          <span>Kostenloses WLAN in der gesamten Wohnung</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-bath"></i></div>
+        <div class="feature-text">
+          <strong>Handtücher</strong>
+          <span>Handtücher werden bereitgelegt</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-bed"></i></div>
+        <div class="feature-text">
+          <strong>Bettwäsche</strong>
+          <span>Bettbezüge sind vorhanden</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><i class="fa-solid fa-tree"></i></div>
+        <div class="feature-text">
+          <strong>Terrasse & Garten</strong>
+          <span>Separater Eingang, Terrasse und Garten mit Spielmöglichkeiten</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDER -->
+<section class="galerie" id="galerie">
+  <div class="container">
+    <div class="section-label">Die Wohnung</div>
+    <h2 class="section-title">Ein Blick ins Vogelhaus</h2>
+    <div class="slider-wrap" id="slider">
+      <div class="slide active"><img src="images/Vogelhaus_Slider_2020_001.png" alt="Terrasse"></div>
+      <div class="slide"><img src="images/Vogelhaus_Slider_2020_002.png" alt="Garten"></div>
+      <div class="slide"><img src="images/Vogelhaus_Slider_2020_003.png" alt="Wohnzimmer"></div>
+      <div class="slide"><img src="images/Vogelhaus_Slider_2020_004.png" alt="Schlafzimmer"></div>
+      <div class="slide"><img src="images/Vogelhaus_Slider_2020_006.png" alt="Haustiere"></div>
+      <div class="slide"><img src="images/Vogelhaus_Slider_2020_007.png" alt="Küche"></div>
+      <div class="slide"><img src="images/Bad_neu_001.png" alt="Bad"></div>
+      <button class="slider-btn prev" onclick="sliderMove(-1)">&#8249;</button>
+      <button class="slider-btn next" onclick="sliderMove(1)">&#8250;</button>
+    </div>
+    <div class="slider-dots" id="slider-dots"></div>
+  </div>
+</section>
+
+<!-- UMGEBUNG -->
+<section class="umgebung" id="umgebung">
+  <div class="container">
+    <div class="section-label">Umgebung</div>
+    <h2 class="section-title">Die Sächsische Schweiz</h2>
+    <p style="color:var(--muted); max-width:600px; margin-bottom:2rem;">Erkunden Sie die einzigartigen Felsformationen, Schluchten und Aussichtspunkte direkt vor der Haustür. Die Bastei ist nur wenige Kilometer entfernt.</p>
+    <div class="photo-grid">
+      <div class="photo-grid-wrap">
+        <img src="images/Bastei_3.jpg" alt="Basteibrücke">
+      </div>
+      <div class="photo-grid-wrap">
+        <img src="images/Bastei_21.png" alt="Bastei Panorama">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERFÜGBARKEIT -->
+<section class="verfuegbarkeit" id="verfuegbarkeit">
+  <div class="container">
+    <div class="section-label">Kalender</div>
+    <h2 class="section-title" style="margin-bottom:2rem;">Verfügbarkeit</h2>
+    <div class="vr-cal-card">
+      <div class="vr-cal-top">
+        <div class="vr-cal-title">Verfügbarkeit · Vogelhaus Rosenthal</div>
+        <div class="vr-cal-status" id="vr-cal-status">Lädt…</div>
+      </div>
+      <div class="vr-cal-nav">
+        <button class="vr-cal-nav-btn" onclick="vrCalChangeMonth(-1)">&#8249;</button>
+        <div class="vr-cal-month-label" id="vr-cal-month-label"></div>
+        <button class="vr-cal-nav-btn" onclick="vrCalChangeMonth(1)">&#8250;</button>
+      </div>
+      <div class="vr-cal-legend">
+        <div class="vr-cal-legend-item"><div class="vr-cal-legend-swatch s-free"></div><span>Verfügbar</span></div>
+        <div class="vr-cal-legend-item"><div class="vr-cal-legend-swatch s-booked"></div><span>Belegt</span></div>
+        <div class="vr-cal-legend-item"><div class="vr-cal-legend-swatch s-today"></div><span>Heute</span></div>
+      </div>
+      <div class="vr-cal-grid-header">
+        <div class="vr-cal-dow">Mo</div><div class="vr-cal-dow">Di</div><div class="vr-cal-dow">Mi</div>
+        <div class="vr-cal-dow">Do</div><div class="vr-cal-dow">Fr</div><div class="vr-cal-dow">Sa</div><div class="vr-cal-dow">So</div>
+      </div>
+      <div class="vr-cal-grid" id="vr-cal-grid"></div>
+      <div class="vr-cal-hint" id="vr-cal-hint"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUCHEN -->
+<section style="background:var(--gold); padding:4rem 2rem; text-align:center;" id="buchen">
+  <h2 style="font-size:3rem; color:#fff; margin-bottom:1rem;">Jetzt buchen!</h2>
+  <p style="color:rgba(255,255,255,0.9); margin-bottom:0.5rem;">Sie können die Ferienwohnung direkt per Mail oder telefonisch buchen.</p>
+  <p style="color:rgba(255,255,255,0.9); margin-bottom:2rem;">Alternativ finden Sie uns auch auf AirBnB oder Booking.com.</p>
+  <div class="booking-links" style="justify-content:center;">
+    <a href="mailto:vogelhaus.rosenthal@gmail.com" class="booking-btn" style="background:#fff; color:var(--gold-dark); border-color:#fff;">
+      <i class="fa-solid fa-envelope"></i> E-Mail schreiben
+    </a>
+    <a href="tel:+493503371328" class="booking-btn" style="background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.5);">
+      <i class="fa-solid fa-phone"></i> 035033 71328
+    </a>
+    <a href="https://www.airbnb.de/rooms/18189051" target="_blank" class="booking-btn airbnb">
+      <i class="fa-brands fa-airbnb"></i> AirBnB
+    </a>
+    <a href="https://www.booking.com/hotel/de/vogelhaus-rosenthal.de.html" target="_blank" class="booking-btn bookingcom">
+      <i class="fa-solid fa-b"></i> Booking.com
+    </a>
+  </div>
+</section>
+
+<!-- LAGE -->
+<section class="lage" id="lage">
+  <div class="container">
+    <div class="section-label">Anreise</div>
+    <h2 class="section-title">Lage & Kontakt</h2>
+    <div class="lage-grid">
+      <div class="lage-info">
+        <div class="lage-contact-item"><i class="fa-solid fa-location-dot"></i><span>Königsteiner Str. 33, 01824 Rosenthal-Bielatal</span></div>
+        <div class="lage-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:+493503371328">035033 71328</a></div>
+        <div class="lage-contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:vogelhaus.rosenthal@gmail.com">vogelhaus.rosenthal@gmail.com</a></div>
+        <div style="margin-top:1.5rem; color:var(--muted); font-size:14px; line-height:1.8;">
+          <p><strong style="color:var(--brown);">Mit dem Auto:</strong><br>A17 Abfahrt Pirna, dann Richtung Bad Schandau / Bielatal. Ca. 45 min von Dresden.</p>
+          <p style="margin-top:1rem;"><strong style="color:var(--brown);">Mit der Bahn:</strong><br>S-Bahn Dresden–Bad Schandau, dann Bus nach Rosenthal-Bielatal.</p>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2520.5!2d14.1450!3d50.8720!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470edd4b3e5d7b0f%3A0x1!2sK%C3%B6nigsteiner+Str.+33%2C+01824+Rosenthal-Bielatal!5e0!3m2!1sde!2sde!4v1"
+          width="100%"
+          height="320"
+          style="border:0; display:block;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="images/_DSC1526-2.jpg" alt="Ihre Gastgeber" class="footer-owner-photo">
+      <img src="images/Vogel_Logo.png" alt="Vogelhaus Rosenthal">
+      <p>Ihre Gastgeber in Rosenthal-Bielatal. Wir freuen uns auf Ihren Besuch!</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="#willkommen">Das Vogelhaus</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#verfuegbarkeit">Verfügbarkeit</a>
+      <a href="#lage">Lage & Anreise</a>
+      <a href="#buchen">Jetzt buchen</a>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <p><i class="fa-solid fa-location-dot" style="color:var(--gold-light); margin-right:6px;"></i>Königsteiner Str. 33<br>01824 Rosenthal-Bielatal</p>
+      <a href="tel:+493503371328"><i class="fa-solid fa-phone" style="color:var(--gold-light); margin-right:6px;"></i>035033 71328</a>
+      <a href="mailto:vogelhaus.rosenthal@gmail.com"><i class="fa-solid fa-envelope" style="color:var(--gold-light); margin-right:6px;"></i>vogelhaus.rosenthal@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Vogelhaus Rosenthal · Alle Rechte vorbehalten</span>
+    <span>Rosenthal-Bielatal, Sächsische Schweiz</span>
+  </div>
+</footer>
+
+<script>
+// ── SLIDER ──
+var slides = document.querySelectorAll('.slide');
+var dotsContainer = document.getElementById('slider-dots');
+var current = 0;
+var autoTimer;
+
+slides.forEach(function(_, i) {
+  var dot = document.createElement('button');
+  dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = function() { goTo(i); };
+  dotsContainer.appendChild(dot);
+});
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  dotsContainer.children[current].classList.remove('active');
+  current = (n + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dotsContainer.children[current].classList.add('active');
+}
+
+function sliderMove(dir) {
+  clearInterval(autoTimer);
+  goTo(current + dir);
+  startAuto();
+}
+
+function startAuto() {
+  autoTimer = setInterval(function() { goTo(current + 1); }, 5000);
+}
+
+startAuto();
+
+// ── CALENDAR ──
+(function() {
+  var AVAIL_URL = 'https://raw.githubusercontent.com/DangerTobbs/vogelhaus-cal/main/availability.json';
+  var bookedRanges = [], loadedOk = false;
+  var now = new Date(), viewYear = now.getFullYear(), viewMonth = now.getMonth();
+  var MONTHS_DE = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function toIso(d) { return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); }
+  function parseIso(s) { var p=s.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+
+  function isBooked(iso) {
+    var t = parseIso(iso).getTime();
+    for (var i=0; i<bookedRanges.length; i++) {
+      if (t >= parseIso(bookedRanges[i].start).getTime() && t < parseIso(bookedRanges[i].end).getTime()) return bookedRanges[i];
+    }
+    return null;
+  }
+
+  function render() {
+    document.getElementById('vr-cal-month-label').textContent = MONTHS_DE[viewMonth] + ' ' + viewYear;
+    var grid = document.getElementById('vr-cal-grid');
+    grid.innerHTML = '';
+    var first = new Date(viewYear, viewMonth, 1);
+    var lastDay = new Date(viewYear, viewMonth+1, 0).getDate();
+    var today = new Date(); today.setHours(0,0,0,0);
+    var startDow = (first.getDay()+6)%7;
+    for (var e=0; e<startDow; e++) { var em=document.createElement('div'); em.className='vr-cal-day vr-empty'; grid.appendChild(em); }
+    for (var d=1; d<=lastDay; d++) {
+      var date=new Date(viewYear,viewMonth,d), iso=toIso(date);
+      var booking=loadedOk?isBooked(iso):null;
+      var cell=document.createElement('div');
+      var cls='vr-cal-day';
+      if (booking) cls+=' vr-booked'; else if (loadedOk) cls+=' vr-free';
+      if (date.getTime()===today.getTime()) cls+=' vr-today';
+      if (date<today) cls+=' vr-past';
+      cell.className=cls;
+      var num=document.createElement('div'); num.className='vr-cal-day-num'; num.textContent=d; cell.appendChild(num);
+      if (booking) {
+        var lbl=document.createElement('div'); lbl.className='vr-cal-day-label'; lbl.textContent='Belegt'; cell.appendChild(lbl);
+        var start=parseIso(booking.start), nights=Math.round((parseIso(booking.end)-start)/86400000);
+        if ((date.getTime()===start.getTime()||d===1) && nights>0) {
+          var nl=document.createElement('div'); nl.className='vr-cal-day-nights'; nl.textContent=nights+(nights===1?' Nacht':' Nächte'); cell.appendChild(nl);
+        }
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  window.vrCalChangeMonth = function(dir) {
+    viewMonth+=dir;
+    if (viewMonth>11){viewMonth=0;viewYear++;} if (viewMonth<0){viewMonth=11;viewYear--;}
+    render();
+  };
+
+  fetch(AVAIL_URL+'?_='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(data){
+      bookedRanges=data.booked||[]; loadedOk=true;
+      var d=data.updated?new Date(data.updated):null;
+      document.getElementById('vr-cal-status').textContent=d?'Aktualisiert: '+d.toLocaleDateString('de-DE'):'Geladen';
+      document.getElementById('vr-cal-hint').textContent='';
+      render();
+    })
+    .catch(function(){
+      document.getElementById('vr-cal-status').textContent='Nicht erreichbar';
+      loadedOk=false; render();
+    });
+
+  render();
+})();
+</script>
+</body>
+</html>
